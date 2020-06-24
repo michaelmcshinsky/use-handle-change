@@ -1,0 +1,21 @@
+{
+  "name": "use-handle-change",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-hooks",
+    "hooks",
+    "state",
+    "events"
+  ],
+  "author": "Michael McShinsky",
+  "license": "MIT",
+  "repository": "https://github.com/michaelmcshinsky/use-handle-change",
+  "dependencies": {
+    "react": "^16.13.1"
+  }
+}
