@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useHandleChange = (initialState = {}) => {
+const useHandleChange = (initialState = {}) => {
   const [storedState, setStoredState] = useState(initialState);
 
   const setState = (event, callback, ...keys) => {
@@ -12,13 +12,13 @@ export const useHandleChange = (initialState = {}) => {
       value = event.target.files[0];
     } else {
       value =
-        e.target.type === 'checkbox' || e.target.type === 'radio'
-          ? e.target.checked
-          : e.target.value;
+        event.target.type === 'checkbox' || event.target.type === 'radio'
+          ? event.target.checked
+          : event.target.value;
     }
 
-    if (keys.length > 0 && obj[keys]) {
-      obj[keys] = value;
+    if (keys.length > 0) {
+      setObjectValue(keys, obj, value);
     } else {
       obj[name] = value;
     }
@@ -32,5 +32,21 @@ export const useHandleChange = (initialState = {}) => {
 
   return [storedState, setState];
 };
+
+function setObjectValue(arr, obj, val) {
+  let schema = obj;
+  for (let i = 0; i < arr.length; i++) {
+    const key = arr[i];
+    if (schema[key] === null || schema[key] === undefined) {
+      schema[key] = {};
+    }
+
+    if (arr.length - 1 === i) {
+      schema[key] = val;
+    } else {
+      schema = schema[key];
+    }
+  }
+}
 
 export default useHandleChange;
