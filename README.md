@@ -118,7 +118,7 @@ return (
     type="text"
     name="name"
     value={state.name}
-    onChange={(e) => handleChange(e, _callbackFuncF)}
+    onChange={(e) => handleChange(e, _callbackFunc)}
   />
 );
 ```
