@@ -1,12 +1,31 @@
 {
   "name": "use-handle-change",
-  "version": "1.1.2",
+  "version": "1.2.2",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "source": "src/index.js",
+  "unpkg": "dist/index.umd.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "microbundle --no-compress --no-sourcemap",
+    "start": "microbundle watch",
+    "docs": "node generate-reference.js"
   },
+  "dependencies": {
+    "react": "^16.13.1"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0"
+  },
+  "devDependencies": {
+    "jsdoc-to-markdown": "^6.0.1",
+    "microbundle": "^0.12.2"
+  },
+  "files": [
+    "dist"
+  ],
   "keywords": [
+    "reactjs",
     "react-hooks",
     "hooks",
     "state",
@@ -14,8 +33,12 @@
   ],
   "author": "Michael McShinsky",
   "license": "MIT",
-  "repository": "https://github.com/michaelmcshinsky/use-handle-change",
-  "dependencies": {
-    "react": "^16.13.1"
-  }
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michaelmcshinsky/use-handle-change"
+  },
+  "bugs": {
+    "url": "https://github.com/michaelmcshinsky/use-handle-change/issues"
+  },
+  "homepage": "https://github.com/michaelmcshinsky/use-handle-change#readme"
 }
