@@ -1,22 +1,64 @@
-# use-handle-change
+# Use Handle Change
 
-A `handleChange` react hook you don't need for managing object state against simple forms.
+A custom [React Hook](https://reactjs.org/docs/hooks-overview.html) that you probably don't need for managing form state as an object.
 
-If you actually use this, I honestly want to know why this benefited you. So please, message me.
+![](https://img.shields.io/bundlephobia/minzip/use-handle-change.svg)
+[![npm](https://img.shields.io/npm/v/use-handle-change.svg)](http://npm.im/easy-peasy)
+![](https://img.shields.io/badge/React-%5E16.8.0-green.svg)
+![](https://img.shields.io/github/license/michaelmcshinsky/use-handle-change.svg)
 
-This would probably be better used as a utility function in your utilities folder.
+## Motivation
 
-## Examples
+Built both to satisfy an itch and to abstract away repetitive functions throughout react apps.
+
+## Features
+
+- Handles most if not all input types.
+- Inject middleware functions for custom validation.
+- Target deeply nested object values dynamically.
+- Receive new state as a callback.
+
+## Requirement
+
+To use `use-handle-change`, you must use `react@16.8.0` or greater which includes hooks.
+
+## Installation
+
+`$ npm i use-handle-change`
+
+## Event Object
+
+When running your `handleChange` function against any input during the `onChange` event, you may pass in the two following arguments to the function.
+
+If you do not pass any arguments, and place your `handleChange` function on the `onChange` attribute, it will behave normally with the passing of the event object to the function.
+
+```javascript
+/**
+ * @param {Object} event - The event object from the DOM input
+ * @param {Object} config - A list of configurations you can pass to the state manager to invoke actions
+ */
+handleChange(event, config)
+```
+
+```javascript
+// Config Object
+{
+  callback: _myCallbackFunction, // A function that will receive the updated state for use after update
+  keys: [] // Array of keys for settings the value of a deeply nested key within your state object
+}
+```
+
+## Example
 
 #### Full Component
 
 ```javascript
-import React from 'react';
-import useHandleChange from 'use-handle-change';
+import React from "react";
+import useHandleChange from "use-handle-change";
 
 const DEFAULT_STATE = {
-  name: '',
-  email: '',
+  name: "",
+  email: "",
 };
 
 const ReactForm = () => {
@@ -38,7 +80,7 @@ const ReactForm = () => {
           type="text"
           name="name"
           value={state.name}
-          onChange={(e) => handleChange(e, callbackFunc)}
+          onChange={handleChange}
         />
       </div>
       <div>
@@ -84,7 +126,7 @@ return (
 ```javascript
 const DEFAULT_STATE = {
   parent: {
-    child: '',
+    child: "",
   },
 };
 
@@ -95,7 +137,7 @@ return (
     type="text"
     name="child"
     value={state.parent.child}
-    onChange={(e) => handleChange(e, null, 'parent', 'child')}
+    onChange={(e) => handleChange(e, { keys: ["parent", "child"] })}
   />
 );
 ```
@@ -104,13 +146,16 @@ return (
 
 ```javascript
 const DEFAULT_STATE = {
-  name: '',
+  name: "",
 };
 
 const [state, handleChange] = useHandleChange(DEFAULT_STATE);
 
+/**
+ * @param {Object} obj - The object from the hooked state for you use as you please.
+ */
 function _callbackFunc(obj) {
-  //... object from state
+  //... run other code here...
 }
 
 return (
@@ -118,7 +163,15 @@ return (
     type="text"
     name="name"
     value={state.name}
-    onChange={(e) => handleChange(e, _callbackFunc)}
+    onChange={(e) => handleChange(e, { callback: _callbackFunc })}
   />
 );
 ```
+
+## License
+
+[MIT Licensed](https://github.com/donavon/use-persisted-state/blob/develop/LICENSE)
+
+## Contributors
+
+[Michael McShinsky](https://github.com/michaelmcshinsky)

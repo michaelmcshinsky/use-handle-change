@@ -1,26 +1,20 @@
-import { useState } from 'react';
-import { setObjectValue } from './utils';
+import { useState } from "react";
+import { setObjectValue } from "./utils";
 
 /**
- * @typedef {function} useHandleChange
- * @property {Object} storedState - The current state of the form object
- * @property {setState} setState - Function to pass event and config options to state
+ * 
+ * @typedef {Object[]} HandleChangeOutput
+ * @property {Object} storedState - The current objects referenced as state.
+ * @property {function} setState - The object function that updates the state object.
  */
 
 /**
- * `setState` property of useHandleChange
- * @typedef {function} setState
- * @param {Object} event - The event object from the DOM element (input)
- * @param {Object} config - Middleware functions and keys for injecting actions throughout the state change lifecycle
- */
-
-/**
- * React hook for managing state objects
- * @param {Object} initialState - The initial object to store form values
- * @returns {useHandleChange} output
+ *
+ * @param {Object} initialState - The object that we will manipulate as the user passes actions to form inputs.
+ * @return {Object[]} HandleChangeOutput The state object and object function to pass and set new key values pairs on the object.
  */
 function useHandleChange(initialState = {}) {
-  if (typeof initialState !== 'object') {
+  if (typeof initialState !== "object") {
     initialState = {};
   }
 
@@ -31,11 +25,11 @@ function useHandleChange(initialState = {}) {
     let name = event.target.name ? event.target.name : event.target.type;
     let value;
 
-    if (event.target.type === 'file') {
+    if (event.target.type === "file") {
       value = event.target.files[0];
     } else {
       value =
-        event.target.type === 'checkbox' || event.target.type === 'radio'
+        event.target.type === "checkbox" || event.target.type === "radio"
           ? event.target.checked
           : event.target.value;
     }
@@ -55,7 +49,7 @@ function useHandleChange(initialState = {}) {
 
     if (
       config.keys &&
-      typeof config.keys === 'array' &&
+      typeof config.keys === "array" &&
       config.keys.length > 0
     ) {
       obj = setObjectValue(keys, obj, value);
@@ -65,7 +59,7 @@ function useHandleChange(initialState = {}) {
 
     setStoredState(obj);
 
-    if (config.callback && typeof config.callback === 'function') {
+    if (config.callback && typeof config.callback === "function") {
       config.callback(obj);
     }
   };
