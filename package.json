@@ -8,8 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "microbundle --no-compress --no-sourcemap",
-    "start": "microbundle watch",
-    "docs": "node generate-reference.js"
+    "start": "microbundle watch"
   },
   "dependencies": {
     "react": "^16.13.1"
@@ -18,7 +17,6 @@
     "react": "^16.8.0"
   },
   "devDependencies": {
-    "jsdoc-to-markdown": "^6.0.1",
     "microbundle": "^0.12.2"
   },
   "files": [
