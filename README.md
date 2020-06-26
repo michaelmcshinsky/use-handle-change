@@ -13,6 +13,7 @@ Built both to satisfy an itch and to abstract away repetitive functions througho
 
 ## Features
 
+- You still keep control over your elements.
 - Handles most if not all input types.
 - Inject middleware functions for custom validation.
 - Target deeply nested object values dynamically.
