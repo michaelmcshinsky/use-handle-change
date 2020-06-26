@@ -1,6 +1,6 @@
 {
   "name": "use-handle-change",
-  "version": "1.2.2",
+  "version": "2.0.0",
   "description": "",
   "main": "dist/index.js",
   "source": "src/index.js",
