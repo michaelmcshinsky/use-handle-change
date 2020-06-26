@@ -12,4 +12,4 @@ function generateReferenceDoc(inputFl, outputFl) {
     });
 }
 
-generateReferenceDoc('src/use-handle-change.js', 'website/reference/use-handle-change.md');
+generateReferenceDoc('src/use-handle-change.js', 'use-handle-change.md');

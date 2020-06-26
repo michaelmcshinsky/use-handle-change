@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { setObjectValue } from './utils';
 
 /**
- * @typedef {Object} useHandleChangeOutput
+ * @typedef {function} useHandleChange
  * @property {Object} storedState - The current state of the form object
- * @property {setStateFunc} setState - Function to pass event and config options to state
+ * @property {setState} setState - Function to pass event and config options to state
  */
 
 /**
- * `setState` property of useHandleChangeOutput
- * @typedef {function} setStateFunc
+ * `setState` property of useHandleChange
+ * @typedef {function} setState
  * @param {Object} event - The event object from the DOM element (input)
  * @param {Object} config - Middleware functions and keys for injecting actions throughout the state change lifecycle
  */
@@ -17,7 +17,7 @@ import { setObjectValue } from './utils';
 /**
  * React hook for managing state objects
  * @param {Object} initialState - The initial object to store form values
- * @returns {storedState, setState} output
+ * @returns {useHandleChange} output
  */
 function useHandleChange(initialState = {}) {
   if (typeof initialState !== 'object') {
