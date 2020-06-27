@@ -17,6 +17,8 @@ Built both to satisfy an itch and to abstract away repetitive functions througho
 - Inject middleware functions for custom validation.
 - Target deeply nested object values dynamically.
 - Receive new state as a callback.
+- Pass in a Constructor function to parse your initial state into a desired shape.
+- Ability to reset state to initial state.
 
 ## Requirement
 
@@ -34,6 +36,14 @@ If you do not pass any arguments, and place your `handleChange` function on the 
 
 ```javascript
 /**
+ * @param {Object} initialState - The object shape you want to start your form data as with key value pairs.
+ * @param {function} Model - Optional, the constructor function used to format your initial state and state upon reset.
+ */
+useHandleChange(initialState, Model)
+```
+
+```javascript
+/**
  * @param {Object} event - The event object from the DOM input
  * @param {Object} config - A list of configurations you can pass to the state manager to invoke actions
  */
@@ -45,6 +55,7 @@ handleChange(event, config)
 {
   callback: _myCallbackFunction, // A function that will receive the updated state for use after update
   keys: [] // Array of keys for settings the value of a deeply nested key within your state object
+  reset: // Resets state to initial state passed into hook.
 }
 ```
 

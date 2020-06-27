@@ -2,7 +2,7 @@ import { useState } from "react";
 import { setObjectValue } from "./utils";
 
 /**
- * 
+ *
  * @typedef {Object[]} HandleChangeOutput
  * @property {Object} storedState - The current objects referenced as state.
  * @property {function} setState - The object function that updates the state object.
@@ -13,15 +13,22 @@ import { setObjectValue } from "./utils";
  * @param {Object} initialState - The object that we will manipulate as the user passes actions to form inputs.
  * @return {Object[]} HandleChangeOutput The state object and object function to pass and set new key values pairs on the object.
  */
-function useHandleChange(initialState = {}) {
+function useHandleChange(initialState = {}, Model) {
   if (typeof initialState !== "object") {
     initialState = {};
   }
 
-  const [storedState, setStoredState] = useState(initialState);
+  const [storedState, setStoredState] = useState({
+    ...(Model ? new Model(initialState) : initialState),
+  });
 
   const setState = (event, config = {}) => {
-    let obj = { ...storedState };
+    let obj = config.reset
+      ? Model
+        ? new Model(initialState)
+        : initialState
+      : { ...storedState };
+
     let name = event.target.name ? event.target.name : event.target.type;
     let value;
 
