@@ -67,7 +67,7 @@ export function useHandleChange(initialState = {}, Model) {
     // }
 
     if (config.keys && Array.isArray(config.keys)) {
-      obj = setObjectValue(keys, obj, value);
+      obj = setObjectValue(config.keys, obj, value);
     } else {
       obj[name] = value;
     }
