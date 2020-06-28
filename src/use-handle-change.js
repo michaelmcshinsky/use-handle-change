@@ -1,12 +1,23 @@
 import { useState } from "react";
 import { setObjectValue } from "./utils";
 
-function useHandleChange(initialState = {}, Model) {
+/**
+ *
+ * @typedef {Object[]} HandleChangeOutput
+ * @property {Object} storedState - The current objects referenced as state.
+ * @property {function} setState - The object function that updates the state object.
+ */
+
+/**
+ *
+ * @param {Object} initialState - The object that we will manipulate as the user passes actions to form inputs.
+ * @return {Object[]} HandleChangeOutput The state object and object function to pass and set new key values pairs on the object.
+ */
+export function useHandleChange(initialState = {}, Model) {
   if (
     typeof initialState !== "object" ||
     typeof initialState === null ||
-    Array.isArray(initialState) ||
-    initialState?.constructor.name !== "Object"
+    Array.isArray(initialState)
   ) {
     initialState = {};
   }
@@ -51,12 +62,8 @@ function useHandleChange(initialState = {}, Model) {
     //     });
     // }
 
-    if (
-      config.keys &&
-      typeof config.keys === "array" &&
-      isArray(config.keys) &&
-      config.keys.length > 0
-    ) {
+    console.log(config.keys && typeof config.keys === "array")
+    if (config.keys && typeof config.keys === "array") {
       obj = setObjectValue(keys, obj, value);
     } else {
       obj[name] = value;
