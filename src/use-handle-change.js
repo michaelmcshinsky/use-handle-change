@@ -33,7 +33,11 @@ function useHandleChange(initialState = {}, Model) {
     let value;
 
     if (event.target.type === "file") {
-      value = event.target.files[0];
+      if (event.target.files.length > 0) {
+        value = event.target.files;
+      } else {
+        value = event.target.files[0];
+      }
     } else {
       value =
         event.target.type === "checkbox" || event.target.type === "radio"
