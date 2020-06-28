@@ -30,8 +30,6 @@ export function useHandleChange(initialState = {}, Model) {
     if (typeof config !== "object") {
       config = {};
     }
-    
-    console.log("config", config);
 
     let obj = config.reset
       ? Model
@@ -68,8 +66,7 @@ export function useHandleChange(initialState = {}, Model) {
     //     });
     // }
 
-    console.log(config.keys && typeof config.keys === "array");
-    if (config.keys && typeof config.keys === "array") {
+    if (config.keys && Array.isArray(config.keys)) {
       obj = setObjectValue(keys, obj, value);
     } else {
       obj[name] = value;
