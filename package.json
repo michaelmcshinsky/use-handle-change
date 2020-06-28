@@ -1,8 +1,9 @@
 {
   "name": "use-handle-change",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "",
   "main": "dist/index.js",
+  "module": "dist/modern.js",
   "source": "src/index.js",
   "unpkg": "dist/index.umd.js",
   "scripts": {
