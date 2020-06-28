@@ -26,7 +26,13 @@ export function useHandleChange(initialState = {}, Model) {
     ...(Model ? new Model(initialState) : initialState),
   });
 
-  const setState = (event, config = {}) => {
+  const setState = (event, config) => {
+    if (typeof config !== "object") {
+      config = {};
+    }
+    
+    console.log("config", config);
+
     let obj = config.reset
       ? Model
         ? new Model(initialState)
@@ -62,7 +68,7 @@ export function useHandleChange(initialState = {}, Model) {
     //     });
     // }
 
-    console.log(config.keys && typeof config.keys === "array")
+    console.log(config.keys && typeof config.keys === "array");
     if (config.keys && typeof config.keys === "array") {
       obj = setObjectValue(keys, obj, value);
     } else {
