@@ -55,7 +55,7 @@ handleChange(event, config)
 // Config Object
 {
   callback: _myCallbackFunction, // A function that will receive the updated state for use after update
-  keys: [] // Array of keys for settings the value of a deeply nested key within your state object
+  keys: [], // Array of keys for settings the value of a deeply nested key within your state object
   reset: // Resets state to initial state passed into hook.
 }
 ```
