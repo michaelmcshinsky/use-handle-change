@@ -14,7 +14,12 @@ import { setObjectValue } from "./utils";
  * @return {Object[]} HandleChangeOutput The state object and object function to pass and set new key values pairs on the object.
  */
 function useHandleChange(initialState = {}, Model) {
-  if (typeof initialState !== "object") {
+  if (
+    typeof initialState !== "object" ||
+    typeof initialState === null ||
+    Array.isArray(initialState) ||
+    initialState?.constructor.name !== "Object"
+  ) {
     initialState = {};
   }
 
@@ -61,6 +66,7 @@ function useHandleChange(initialState = {}, Model) {
     if (
       config.keys &&
       typeof config.keys === "array" &&
+      isArray(config.keys) &&
       config.keys.length > 0
     ) {
       obj = setObjectValue(keys, obj, value);
