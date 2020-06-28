@@ -66,7 +66,7 @@ handleChange(event, config)
 
 ```javascript
 import React from "react";
-import useHandleChange from "use-handle-change";
+import { useHandleChange } from "use-handle-change";
 
 const DEFAULT_STATE = {
   name: "",
