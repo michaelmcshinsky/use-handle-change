@@ -11,6 +11,8 @@ A custom [React Hook](https://reactjs.org/docs/hooks-overview.html) that you pro
 
 Built both to satisfy an itch and to abstract away repetitive functions throughout react apps.
 
+[A React Hook You Don't Need](https://medium.com/swlh/a-react-hook-you-dont-need-78ba97b5638e?source=post_stats_page---------------------------)
+
 ## Features
 
 - You still keep control over your elements.
