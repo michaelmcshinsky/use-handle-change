@@ -12,13 +12,13 @@
     "start": "microbundle watch"
   },
   "dependencies": {
-    "react": "^16.13.1"
+    "react": "^16.14.0"
   },
   "peerDependencies": {
     "react": "^16.8.0"
   },
   "devDependencies": {
-    "microbundle": "^0.12.2"
+    "microbundle": "^0.12.4"
   },
   "files": [
     "dist"
